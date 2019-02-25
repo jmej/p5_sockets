@@ -16,7 +16,7 @@ function setup() {
       // Draw a blue circle
       fill(0,0,255);
       noStroke();
-      ellipse(data.x,data.y,10,10);
+      ellipse(data.x,data.y,50,50);
     }
   );
 }
@@ -29,7 +29,7 @@ function mouseDragged() {
   // Draw some white circles
   fill(255);
   noStroke();
-  ellipse(mouseX,mouseY,10,10);
+  ellipse(mouseX,mouseY,50,50);
   // Send the mouse coordinates
   sendmouse(mouseX,mouseY);
 }
