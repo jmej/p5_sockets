@@ -16,6 +16,6 @@ To use:
 
 and/or push to heroku to deploy there
 
-`heroku login`
-`heroku git:remote -a <the name of your app on heroku goes here>`
-`git push heroku master`
+    heroku login
+    heroku git:remote -a <the name of your app on heroku goes here>
+    git push heroku master
