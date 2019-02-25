@@ -11,11 +11,11 @@ https://www.youtube.com/watch?v=bjULmG8fqc8
 
 To use:
 
-`npm install
-node app.js`
+`npm install`
+`node app.js`
 
 and/or push to heroku to deploy there
 
-`heroku login
-heroku git:remote -a <the name of your app on heroku goes here>
-git push heroku master`
+`heroku login`
+`heroku git:remote -a <the name of your app on heroku goes here>`
+`git push heroku master`
