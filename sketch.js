@@ -16,7 +16,7 @@ function setup() {
       // Draw a blue circle
       fill(0,0,255);
       noStroke();
-      ellipse(data.x,data.y,80,80);
+      ellipse(data.x,data.y,10,10);
     }
   );
 }
