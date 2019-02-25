@@ -29,7 +29,7 @@ function mouseDragged() {
   // Draw some white circles
   fill(255);
   noStroke();
-  ellipse(mouseX,mouseY,80,80);
+  ellipse(mouseX,mouseY,10,10);
   // Send the mouse coordinates
   sendmouse(mouseX,mouseY);
 }
