@@ -11,8 +11,8 @@ https://www.youtube.com/watch?v=bjULmG8fqc8
 
 To use:
 
-`npm install`
-`node app.js`
+```npm install
+node app.js```
 
 and/or push to heroku to deploy there
 
