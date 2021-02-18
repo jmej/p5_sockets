@@ -15,7 +15,7 @@ function setup() {
     function(data) {
       console.log("Got: " + data.x + " " + data.y);
       // Draw a blue circle
-      fill(0,0,random(255));
+      fill(random(255),0,random(255));
       noStroke();
       ellipse(data.x,data.y,10,10);
     }
@@ -40,11 +40,9 @@ function sendmouse(xpos, ypos) {
   // We are sending!
   console.log("sendmouse: " + xpos + " " + ypos);
   
-  // Make a little object with  and y
-  var data = {
-    x: xpos,
-    y: ypos
-  };
+  // Make a little object with x and y
+
+  var data = {x: xpos, y: ypos };
 
   // Send that object to the socket
   socket.emit('mouse',data);
