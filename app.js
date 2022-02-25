@@ -1,82 +1,25 @@
-// The file system module
-const http = require('http');
-const path = require('path');
-const fs = require('fs');
+const http = require('http')
+const express = require('express')
 
-let server = http.createServer(handleRequest);
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 8000;
-}
-server.listen(port);
+const app = express()
+app.use(express.static('public'))
 
-function handleRequest(req, res) {
-  // What did we request?
-  let pathname = req.url;
-  
-  // If blank let's ask for index.html
-  if (pathname == '/') {
-    pathname = '/index.html';
-  }
-  
-  // Ok what's our file extension
-  let ext = path.extname(pathname);
+app.set('port', '8000')
 
-  // Map extension to file type
-  const typeExt = {
-    '.html': 'text/html',
-    '.js':   'text/javascript',
-    '.css':  'text/css'
-  };
+const server = http.createServer(app)
+server.on('listening', () => {
+ console.log('Listening on port 8000')
+})
 
-  // What is it?  Default to plain text
-  let contentType = typeExt[ext] || 'text/plain';
+// Web sockets
+const io = require('socket.io')(server)
 
-  // Now read and write back the file with the appropriate content type
-  fs.readFile(__dirname + pathname,
-    function (err, data) {
-      if (err) {
-        res.writeHead(500);
-        return res.end('Error loading ' + pathname);
-      }
-      // Dynamically setting content type
-      res.writeHead(200,{ 'Content-Type': contentType });
-      res.end(data);
-    }
-  );
-}
+io.sockets.on('connection', (socket) => {
+  console.log('Client connected: ' + socket.id)
 
-// WebSocket Portion
-// WebSockets work with the HTTP server
-var io = require('socket.io').listen(server);
+  socket.on('mouse', (data) => socket.broadcast.emit('mouse', data))
 
-// Register a callback function to run when we have an individual connection
-// This is run for each individual user that connects
-io.sockets.on('connection',
-  // We are given a websocket object in our function
-  function (socket) {
-  
-    console.log("We have a new client: " + socket.id);
-  
-    // When this user emits, client side: socket.emit('otherevent',some data);
-    socket.on('mouse',
-      function(data) {
-        // Data comes in as whatever was sent, including objects
-        console.log("Received: 'mouse' " + data.x + " " + data.y);
-      
-        // Send it to all other clients
-        socket.broadcast.emit('mouse', data);
-        
-        // This is a way to send to everyone including sender
-        // io.sockets.emit('message', "this goes to everyone");
+  socket.on('disconnect', () => console.log('Client has disconnected'))
+})
 
-      }
-    );
-    
-    socket.on('disconnect', function() {
-      console.log("Client has disconnected");
-    });
-  }
-);
-
-
+server.listen('8000')
