@@ -9,6 +9,10 @@ This repo contains mostly the same code, modified to deply to heroku
 Daniel Schiffman also has a video version of much the same stuff here:
 https://www.youtube.com/watch?v=bjULmG8fqc8
 
+Updated to use socket.io 4.22 referencing this:
+https://github.com/TannerGabriel/DrawingApp
+https://gabrieltanner.org/blog/realtime-drawing-app
+
 To use:
 
     npm install
