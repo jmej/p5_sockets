@@ -5,9 +5,9 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   background(0);
   // Start a socket connection to the server
-  socket = io.connect('socket-hack.herokuapp.com') //change localhost:8000 for running locally
+  // socket = io.connect('localhost:8000');
   // if this server is running somewhere else do something like:
-  //socket = io.connect('https://socket-hack.herokuapp.com/');
+  socket = io.connect('https://p5-sockets.onrender.com');
   // We make a named event called 'mouse' and write an
   // anonymous callback function
   socket.on('mouse',

@@ -18,10 +18,6 @@ To use:
     npm install
     node app.js
 
-and/or push to heroku to deploy there
 
-    heroku login
-    heroku git:remote -a <the name of your app on heroku goes here>
-    git push heroku master
 
-live version at https://socket-hack.herokuapp.com/
+live version at https://p5-sockets.onrender.com
