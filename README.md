@@ -4,7 +4,7 @@
 Code / example based on
 [this](https://github.com/processing/p5.js/wiki/p5.js,-node.js,-socket.io)
 
-This repo contains mostly the same code, modified to deply to heroku
+This repo contains mostly the same code, modified to deploy to render
 
 Daniel Schiffman also has a video version of much the same stuff here:
 https://www.youtube.com/watch?v=bjULmG8fqc8
